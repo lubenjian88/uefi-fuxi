@@ -119,14 +119,16 @@ jobs:
             --enable-backboardd
       - name: Fetch the firmware files from this repository
         uses: actions/checkout@v4
+        with:
+          path: ours
 
       - name: Install the WCN7850 firmware
         run: |
           set -euxo pipefail
           sudo mkdir -p /Volumes/iOSRoot/usr/local/share/fuxi/wlan
-          sudo install -m 0644 wlan-fw/amss.bin /Volumes/iOSRoot/usr/local/share/fuxi/wlan/amss.bin
-          sudo install -m 0644 wlan-fw/amss20.bin /Volumes/iOSRoot/usr/local/share/fuxi/wlan/amss20.bin
-          sudo install -m 0644 wlan-fw/bd_m3gl.elf /Volumes/iOSRoot/usr/local/share/fuxi/wlan/bd_m3gl.elf
+          sudo install -m 0644 ours/wlan-fw/amss.bin /Volumes/iOSRoot/usr/local/share/fuxi/wlan/amss.bin
+          sudo install -m 0644 ours/wlan-fw/amss20.bin /Volumes/iOSRoot/usr/local/share/fuxi/wlan/amss20.bin
+          sudo install -m 0644 ours/wlan-fw/bd_m3gl.elf /Volumes/iOSRoot/usr/local/share/fuxi/wlan/bd_m3gl.elf
           sudo ls -l /Volumes/iOSRoot/usr/local/share/fuxi/wlan
       - name: Detach and report
         run: |
