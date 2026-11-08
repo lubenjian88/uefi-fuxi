@@ -7,7 +7,7 @@ on:
         default: 'no'
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 180
     steps:
       - name: Fetch the reference root tweaks
