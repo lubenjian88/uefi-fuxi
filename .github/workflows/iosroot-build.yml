@@ -117,6 +117,9 @@ jobs:
             --ca-smoke /tmp/metal/fuxi-ca-smoke \
             --ca-conf /tmp/metal/ca-smoke.conf \
             --enable-backboardd
+      - name: Fetch the firmware files from this repository
+        uses: actions/checkout@v4
+
       - name: Install the WCN7850 firmware
         run: |
           set -euxo pipefail
